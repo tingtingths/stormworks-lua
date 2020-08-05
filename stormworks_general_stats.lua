@@ -124,6 +124,11 @@ function drawRPSSetPoint(x, y, sp)
     drawInfoTxt(x, y, 'RPS SP', fmtDec(sp, 1))
 end
 
+function drawThrottle(x, y, throttle)
+    throttle = throttle * 100
+    drawInfoTxt(x, y, 'THR', fmtDec(throttle, 0))
+end
+
 function drawLeftRightTri(x, y, leftOrRight)
     if (leftOrRight == 'l') then
         screen.drawTriangleF(x, y + CHAR_H / 2, x + CHAR_W, y, x + CHAR_W, y + CHAR_H)
@@ -187,5 +192,6 @@ function onDraw()
     drawSpd(1, CHAR_H * 2, spd, unit_of_speed)
     drawHDG(1, CHAR_H * 4 + 8, bearing)
     drawGear(w / 2 + CHAR_W, CHAR_H * 2, gear)
+    drawThrottle(w / 2 + CHAR_W, CHAR_H * 4 + 8, throttle)
     --drawRPSSetPoint(w / 2 + CHAR_W, CHAR_H * 4 + 8, rpsSP)
 end
